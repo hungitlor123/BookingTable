@@ -46,14 +46,14 @@ export const loginAccount = createAsyncThunk<IAccount, string | Object>(
   async (data, thunkAPI) => {
     try {
       const response = await axiosInstance.post(LOGIN_ENDPOINT, data);
-      const { errCode, message, accessToken, user } = response.data;
+      const { errCode, message, user } = response.data;
 
       if (errCode !== 0) {
         toast.error(message || "Login failed");
         return thunkAPI.rejectWithValue(message || "Login failed");
       }
 
-      localStorage.setItem("bookingToken", accessToken);
+      localStorage.setItem("bookingToken", user);
       toast.success("Login successful");
 
       return user;

@@ -38,7 +38,7 @@ export function LoginForm({
                 const role = response.role;
                 if (role === "ADMIN") {
 
-                    navigate("/");
+                    navigate("/product-management");
                 } else {
                     toast.error(response.message);
                 }
