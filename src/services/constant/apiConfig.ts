@@ -1,7 +1,7 @@
 export const BASE_URL = "https://banhom-app-5glzk.ondigitalocean.app/api";
 
 export const GET_PRODUCT_ENDPOINT = `${BASE_URL}/get-all-products`;
-export const GET_PRODUCT_BY_ID_ENDPOINT = `${BASE_URL}/api/get-detail-product`;
+export const GET_PRODUCT_BY_ID_ENDPOINT = `${BASE_URL}/get-detail-product`;
 export const CREATE_PRODUCT_ENDPOINT = `${BASE_URL}/create-product`;
 export const EDIT_PRODUCT_ENDPOINT = `${BASE_URL}/update-product`;
 export const DELETE_PRODUCT_ENDPOINT = `${BASE_URL}/delete-product`;
@@ -12,3 +12,4 @@ export const REGISTER_ENDPOINT = `${BASE_URL}/register`;
 
 //category
 export const GET_CATEGORY_ENDPOINT = `${BASE_URL}/get-all-categories`;
+export const GET_CATEGORY_TREE_ENDPOINT = `${BASE_URL}/get-category-tree`;

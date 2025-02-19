@@ -5,8 +5,9 @@ import { useAppDispatch, useAppSelector } from "@/services/store/store";
 import { getAllProduct } from "@/services/features/product/productSlice";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
-import { Category } from "@/components/Category/Category";
 import { Footer } from "@/components/Footer/Footer";
+import { Link } from "react-router-dom";
+import Category from "@/components/Category/Category";
 
 
 // Fake API call delay simulation
@@ -61,7 +62,8 @@ const HomePage = () => {
                             </div>
                         ))
                         : products?.slice(0, visibleProducts).map((product) => (
-                            <div key={product.id} className="text-center">
+
+                            <Link key={product.id} to={`/products/${product.id}`} className="text-center">
                                 <div className="border border-gray-300 rounded-md overflow-hidden shadow-sm">
                                     <div className="w-full aspect-[4/3] overflow-hidden">
                                         <img
@@ -74,7 +76,7 @@ const HomePage = () => {
                                 <h3 className="mt-2 text-base font-semibold text-gray-900 hover:text-blue-700 transition-colors">
                                     {product.name}
                                 </h3>
-                            </div>
+                            </Link>
                         ))}
 
                     {/* Hiển thị Skeleton khi load thêm sản phẩm */}
