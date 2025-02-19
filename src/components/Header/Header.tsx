@@ -1,66 +1,48 @@
-"use client";
 
-import { useState } from "react";
-import { Search, ChevronDown } from "lucide-react";
-
-const menuItems = [
-    "SCENES", "FURNITURE", "KITCHEN", "CHILDROOM", "BATHROOM",
-    "DECORATION", "LIGHTING", "PLANT"
-];
-
-const moreItems = ["TECHNOLOGY", "OTHER MODELS"];
+import { useEffect } from "react";
+import { Search } from "lucide-react";
+import { useAppDispatch, useAppSelector } from "@/services/store/store";
+import { getAllCategory } from "@/services/features/category/categorySlice";
 
 export default function Header() {
-    const [isMoreOpen, setIsMoreOpen] = useState(false);
+    const dispatch = useAppDispatch();
+    const { categories, loading } = useAppSelector((state) => state.categories); // Lấy danh mục từ Redux
+
+    useEffect(() => {
+        dispatch(getAllCategory()); // Gọi API lấy danh mục khi component mount
+    }, [dispatch]);
 
     return (
-        <header className="bg-[#000000] text-white shadow-md py-4">
+        <header className="bg-[#004d4d] text-white shadow-md py-4">
             <nav className="container mx-auto px-6 flex items-center justify-between">
-
-                {/* Logo - Căn sát trái */}
+                {/* Logo */}
                 <div className="text-4xl font-bold tracking-wide flex items-center">
                     <span className="text-white">DALAT</span>
                     <span className="text-gray-300">.PHE</span>
                 </div>
 
-                {/* Menu - Căn giữa, cách đều nhau */}
+                {/* Danh mục API hiển thị ngang hàng */}
                 <div className="flex-1 flex justify-center space-x-6">
-                    {menuItems.map((item) => (
-                        <a
-                            key={item}
-                            href="#"
-                            className="uppercase text-sm font-bold hover:text-blue-200 transition-colors"
-                        >
-                            {item}
-                        </a>
-                    ))}
-
-                    {/* Dropdown MORE */}
-                    <div className="relative">
-                        <button
-                            onClick={() => setIsMoreOpen(!isMoreOpen)}
-                            className="uppercase text-sm font-bold flex items-center hover:text-blue-200 transition-colors"
-                        >
-                            MORE <ChevronDown className="ml-1 w-4 h-4" />
-                        </button>
-
-                        {isMoreOpen && (
-                            <div className="absolute left-0 mt-2 w-40 bg-white text-gray-800 rounded shadow-lg py-2">
-                                {moreItems.map((item) => (
-                                    <a
-                                        key={item}
-                                        href="#"
-                                        className="block px-4 py-2 text-sm hover:bg-blue-100"
-                                    >
-                                        {item}
-                                    </a>
-                                ))}
-                            </div>
-                        )}
-                    </div>
+                    {loading ? (
+                        <span className="text-sm text-gray-300">Loading...</span>
+                    ) : (
+                        categories && categories.length > 0 ? (
+                            categories.map((category) => (
+                                <a
+                                    key={category.id}
+                                    href={`#${category.name.toLowerCase()}`}
+                                    className="uppercase text-sm font-bold hover:text-blue-200 transition-colors"
+                                >
+                                    {category.name}
+                                </a>
+                            ))
+                        ) : (
+                            <span className="text-sm text-gray-300">No categories found</span>
+                        )
+                    )}
                 </div>
 
-                {/* Search Icon - Góc phải */}
+                {/* Search Icon */}
                 <div className="ml-auto">
                     <Search className="w-6 h-6 text-white hover:text-blue-200 cursor-pointer" />
                 </div>

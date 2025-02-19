@@ -4,17 +4,19 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import productSlice from "../features/product/productSlice";
 import authSlice from "../features/authentication/authSlice";
+import categorySlice from "../features/category/categorySlice";
 
 const presistConfig = {
   key: "root",
   storage,
-  whitelist: ["products", "auth"],
+  whitelist: ["products", "auth", "categories"],
 };
 
 // Create a hook for using TypedUseSelectorHook
 const rootReducer = combineReducers({
   products: productSlice,
   auth: authSlice,
+  categories: categorySlice,
   // Add your reducers here
 });
 

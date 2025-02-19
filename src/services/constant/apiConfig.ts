@@ -9,3 +9,6 @@ export const DELETE_PRODUCT_ENDPOINT = `${BASE_URL}/delete-product`;
 //auth
 export const LOGIN_ENDPOINT = `${BASE_URL}/login`;
 export const REGISTER_ENDPOINT = `${BASE_URL}/register`;
+
+//category
+export const GET_CATEGORY_ENDPOINT = `${BASE_URL}/get-all-categories`;
