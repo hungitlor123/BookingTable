@@ -1,4 +1,4 @@
-import { FormLoginValues, IAccount, IRegister } from "@/interfaces/Account";
+import { IAccount, IRegister } from "@/interfaces/Account";
 import {
   LOGIN_ENDPOINT,
   REGISTER_ENDPOINT,
@@ -41,40 +41,26 @@ export const registerAcount = createAsyncThunk<IAccount, IRegister>(
   }
 );
 
-export const loginAccount = createAsyncThunk<IAccount, FormLoginValues>(
+export const loginAccount = createAsyncThunk<IAccount, string | Object>(
   "auth/login",
   async (data, thunkAPI) => {
     try {
-      const formData = new URLSearchParams();
-      if (data.emailOrUsername.includes("@")) {
-        formData.append("email", data.emailOrUsername);
-      } else {
-        formData.append("username", data.emailOrUsername);
-      }
-      formData.append("password", data.password);
+      const response = await axiosInstance.post(LOGIN_ENDPOINT, data);
+      const { errCode, message, accessToken, user } = response.data;
 
-      const response = await axiosInstance.post(LOGIN_ENDPOINT, formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
-
-      if (!response.data || response.data.errCode !== 0) {
-        throw new Error(response.data.message || "Login failed");
+      if (errCode !== 0) {
+        toast.error(message || "Login failed");
+        return thunkAPI.rejectWithValue(message || "Login failed");
       }
 
-      if (!response.data.user) {
-        throw new Error("User data is missing from response");
-      }
-
-      localStorage.setItem("bookingToken", JSON.stringify(response.data.user));
+      localStorage.setItem("bookingToken", accessToken);
       toast.success("Login successful");
 
-      return response.data;
+      return user;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(
-        error.response?.data?.message || "Unknown error"
-      );
+      const errorMessage = error.response?.data?.message || "Server Error";
+      toast.error(errorMessage);
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );
