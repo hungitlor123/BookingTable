@@ -1,11 +1,12 @@
 
 import { useEffect, useState } from "react";
 import Header from "@/components/Header/Header";
-import { Footer } from "@/components/Footer/Footer";
 import { useAppDispatch, useAppSelector } from "@/services/store/store";
 import { getAllProduct } from "@/services/features/product/productSlice";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
+import { Category } from "@/components/Category/Category";
+import { Footer } from "@/components/Footer/Footer";
 
 
 // Fake API call delay simulation
@@ -95,6 +96,8 @@ const HomePage = () => {
                     </div>
                 )}
             </main>
+
+            <Category />
 
             <Footer />
         </div>

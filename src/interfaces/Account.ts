@@ -8,6 +8,7 @@ export interface IUser {
 export interface IAccount {
   errCode: number;
   message: string;
+  role?: string;
   user: IUser;
 }
 
