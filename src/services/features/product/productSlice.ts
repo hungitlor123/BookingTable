@@ -151,9 +151,9 @@ export const getProductByCategory = createAsyncThunk<
   try {
     const token = localStorage.getItem("bookingToken");
 
-    if (!token) {
-      return thunkAPI.rejectWithValue("Authentication token not found.");
-    }
+    // if (!token) {
+    //   return thunkAPI.rejectWithValue("Authentication token not found.");
+    // }
 
     const response = await axiosInstance.get(GET_PRODUCT_BY_CATEGORY_ENDPOINT, {
       headers: {
