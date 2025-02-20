@@ -70,7 +70,7 @@ const ProductDetailPage = () => {
                 {/* Giá sản phẩm & Ngày cập nhật */}
                 <div className="border-t border-gray-300 pt-4 mt-4">
                     <p className="text-xl text-center font-semibold text-blue-600">
-                        Price: {product.price.toLocaleString()} USD
+                        Price: {product.price ? product.price.toLocaleString() : "N/A"} USD
                     </p>
                     <p className="text-center text-gray-500 text-sm mt-2">
                         Update: {formatMMDDYYYYDate(new Date(product.updatedAt))}

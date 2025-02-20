@@ -13,3 +13,6 @@ export const REGISTER_ENDPOINT = `${BASE_URL}/register`;
 //category
 export const GET_CATEGORY_ENDPOINT = `${BASE_URL}/get-all-categories`;
 export const GET_CATEGORY_TREE_ENDPOINT = `${BASE_URL}/get-category-tree`;
+export const CREATE_CATEGORY_ENDPOINT = `${BASE_URL}/create-category`;
+export const DELETE_CATEGORY_ENDPOINT = `${BASE_URL}/delete-category`;
+export const EDIT_CATEGORY_ENDPOINT = `${BASE_URL}/update-category`;

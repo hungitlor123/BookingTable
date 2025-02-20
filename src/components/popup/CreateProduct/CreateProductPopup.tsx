@@ -102,7 +102,6 @@ const CreateProductPopup: FC<CreateProductPopupProps> = ({ isOpen, onClose }) =>
                         {errors.image && <p className="text-red-500 text-sm">{errors.image.message}</p>}
                     </div>
 
-                    {/* Category select */}
                     <div className="mb-4">
                         <label className="block text-gray-700 dark:text-gray-400">Category</label>
                         <select
@@ -110,11 +109,14 @@ const CreateProductPopup: FC<CreateProductPopupProps> = ({ isOpen, onClose }) =>
                             className="w-full px-3 py-2 mt-1 border rounded-lg dark:bg-gray-700 dark:text-gray-300"
                         >
                             <option value="">Select Category</option>
-                            {categories && categories.map((category) => (
-                                <option key={category.id} value={category.id}>
-                                    {category.name}
-                                </option>
-                            ))}
+                            {categories &&
+                                categories
+                                    .filter(category => category.parentId !== null) // Chỉ lấy category có parentId khác null
+                                    .map((category) => (
+                                        <option key={category.id} value={category.id}>
+                                            {category.name}
+                                        </option>
+                                    ))}
                         </select>
                         {errors.categoryId && <p className="text-red-500 text-sm">{errors.categoryId.message}</p>}
                     </div>
