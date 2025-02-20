@@ -8,7 +8,7 @@ type FormProductData = {
     name: string;
     description: string;
     image: FileList;
-    price: number;
+    url: string;
     categoryId: number;  // Mới thêm categoryId
     date: number;
 };
@@ -45,7 +45,7 @@ const CreateProductPopup: FC<CreateProductPopupProps> = ({ isOpen, onClose }) =>
             return;
         }
 
-        formData.append('price', data.price.toString());
+        formData.append('url', data.url.toString());
         formData.append('categoryId', data.categoryId.toString()); // Thêm categoryId vào formData
         formData.append('date', Date.now().toString()); // Đổi 'timestamp' thành 'date'
         // Dispatch the thunk action with formData
@@ -122,13 +122,13 @@ const CreateProductPopup: FC<CreateProductPopupProps> = ({ isOpen, onClose }) =>
                     </div>
 
                     <div className="mb-4">
-                        <label className="block text-gray-700 dark:text-gray-400">Price</label>
+                        <label className="block text-gray-700 dark:text-gray-400">url</label>
                         <input
-                            type="number"
-                            {...register("price", { required: "Price is required" })}
+                            type="string"
+                            {...register("url", { required: "url is required" })}
                             className="w-full px-3 py-2 mt-1 border rounded-lg dark:bg-gray-700 dark:text-gray-300"
                         />
-                        {errors.price && <p className="text-red-500 text-sm">{errors.price.message}</p>}
+                        {errors.url && <p className="text-red-500 text-sm">{errors.url.message}</p>}
                     </div>
 
                     <div className="flex justify-between items-center space-y-4 sm:flex sm:space-y-0">

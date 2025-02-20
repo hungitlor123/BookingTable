@@ -78,7 +78,7 @@ const TableProduct = () => {
                 <TableHeader>
                     <TableRow>
                         <TableHead className="w-[150px]">Name</TableHead>
-                        <TableHead className="w-[100px]">Price</TableHead>
+                        <TableHead className="w-[100px]">URL</TableHead>
                         <TableHead>Description</TableHead>
                         <TableHead className="text-right">Create At</TableHead>
                         <TableHead className="text-right">Update At</TableHead>
@@ -94,7 +94,7 @@ const TableProduct = () => {
                                         {product.name || "No Name"}
                                     </TableCell>
                                     <TableCell className="w-[30vh]">
-                                        {product.price ?? 0}
+                                        {product.url ?? 0}
                                     </TableCell>
                                     <TableCell>
                                         {product.description

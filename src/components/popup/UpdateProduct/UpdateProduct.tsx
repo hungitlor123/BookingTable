@@ -10,7 +10,7 @@ interface FormProductData {
     name: string;
     description: string;
     image: FileList | string;
-    price: number;
+    url: string; // Đã chuyển từ price sang url
     categoryId: number;
     date: number;
 }
@@ -39,7 +39,7 @@ const UpdateProductPopup: FC<UpdateProductPopupProps> = ({ isOpen, onClose, prod
             id: product.id,
             name: product.name,
             description: product.description,
-            price: Number(product.price),
+            url: product.url, // Sửa giá trị từ price sang url
             categoryId: product.categoryId,
         });
         setImageUrl(product.image_url || null);
@@ -50,7 +50,7 @@ const UpdateProductPopup: FC<UpdateProductPopupProps> = ({ isOpen, onClose, prod
         formData.append("id", data.id.toString());
         formData.append("name", data.name);
         formData.append("description", data.description);
-        formData.append("price", data.price.toString());
+        formData.append("url", data.url); // Gửi url thay vì price
         formData.append("categoryId", data.categoryId.toString());
         formData.append("date", Date.now().toString());
 
@@ -98,9 +98,9 @@ const UpdateProductPopup: FC<UpdateProductPopupProps> = ({ isOpen, onClose, prod
                         {errors.categoryId && <p className="text-red-500 text-sm">{errors.categoryId.message}</p>}
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 dark:text-gray-400">Price</label>
-                        <input type="number" {...register("price", { required: "Price is required" })} className="w-full px-3 py-2 mt-1 border rounded-lg dark:bg-gray-700 dark:text-gray-300" />
-                        {errors.price && <p className="text-red-500 text-sm">{errors.price.message}</p>}
+                        <label className="block text-gray-700 dark:text-gray-400">URL</label>
+                        <input type="text" {...register("url", { required: "URL is required" })} className="w-full px-3 py-2 mt-1 border rounded-lg dark:bg-gray-700 dark:text-gray-300" />
+                        {errors.url && <p className="text-red-500 text-sm">{errors.url.message}</p>}
                     </div>
                     <div className="flex justify-between items-center">
                         <button type="button" className="px-4 py-2 text-white bg-red-500 rounded-lg" onClick={onClose}>Cancel</button>
