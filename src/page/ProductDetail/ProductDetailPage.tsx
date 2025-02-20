@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { getProductById } from "@/services/features/product/productSlice";
 import Header from "@/components/Header/Header";
 import { Footer } from "@/components/Footer/Footer";
+import { getAllCategory } from "@/services/features/category/categorySlice";
 
 const ProductDetailPage = () => {
     const { id } = useParams();
@@ -19,6 +20,7 @@ const ProductDetailPage = () => {
     useEffect(() => {
         if (id) {
             dispatch(getProductById({ id: Number(id) }));
+            dispatch(getAllCategory());
         }
     }, [dispatch, id]);
 
