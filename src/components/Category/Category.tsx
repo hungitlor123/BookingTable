@@ -33,7 +33,7 @@ export default function Category() {
                                         {category.subcategories.map((sub) => (
                                             <li key={sub.id}>
                                                 <a
-                                                    href="#"
+                                                    href={`/category/${sub.id}`}
                                                     className="text-gray-600 hover:text-blue-700 transition-colors text-sm"
                                                 >
                                                     {sub.name}

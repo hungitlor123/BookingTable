@@ -3,6 +3,7 @@ import {
   CREATE_PRODUCT_ENDPOINT,
   DELETE_PRODUCT_ENDPOINT,
   EDIT_PRODUCT_ENDPOINT,
+  GET_PRODUCT_BY_CATEGORY_ENDPOINT,
   GET_PRODUCT_BY_ID_ENDPOINT,
   GET_PRODUCT_ENDPOINT,
 } from "@/services/constant/apiConfig";
@@ -143,6 +144,35 @@ export const deleteProduct = createAsyncThunk<IProduct, { id: number }>(
   }
 );
 
+export const getProductByCategory = createAsyncThunk<
+  IProduct[], // API trả về danh sách sản phẩm
+  { categoryId: number } // Tham số đầu vào
+>("products/getProductByCategory", async ({ categoryId }, thunkAPI) => {
+  try {
+    const token = localStorage.getItem("bookingToken");
+
+    if (!token) {
+      return thunkAPI.rejectWithValue("Authentication token not found.");
+    }
+
+    const response = await axiosInstance.get(GET_PRODUCT_BY_CATEGORY_ENDPOINT, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: { categoryId }, // Truyền categoryId như query param
+    });
+
+    return response.data;
+  } catch (error: any) {
+    console.error("Error fetching products by category:", error);
+
+    return thunkAPI.rejectWithValue(
+      error.response?.data?.message ||
+        "An error occurred while fetching products."
+    );
+  }
+});
+
 export const productSlice = createSlice({
   name: "products",
   initialState,
@@ -221,6 +251,19 @@ export const productSlice = createSlice({
         );
       })
       .addCase(deleteProduct.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
+    // getProductByCategory
+    builder
+      .addCase(getProductByCategory.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getProductByCategory.fulfilled, (state, action) => {
+        state.loading = false;
+        state.products = action.payload;
+      })
+      .addCase(getProductByCategory.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
