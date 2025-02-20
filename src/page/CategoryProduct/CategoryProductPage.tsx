@@ -14,6 +14,9 @@ const CategoryProductsPage = () => {
     const [visibleProducts, setVisibleProducts] = useState(6); // Hiển thị 6 sản phẩm ban đầu
 
     useEffect(() => {
+        console.log(categoryId);
+        console.log(categoryId);
+
         if (categoryId) {
             dispatch(getProductByCategory({ categoryId: Number(categoryId) }));
             setTimeout(() => {
