@@ -6,9 +6,13 @@ export function Footer() {
         <footer className="bg-gray-900 text-white py-12 mt-8">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-6">
-                    <button className="border border-white py-2 px-4 rounded">DALAT.PHE SOCIAL MEDIA</button>
+                    <a href="/" >
+                        <button className="border border-white py-2 px-4 rounded">RYTEMS SOCIAL MEDIA</button>
+                    </a>
                     <div className="flex justify-center gap-4 mt-4">
-                        <Facebook className="text-blue-500" />
+                        <a href="https://www.facebook.com/profile.php?id=61572939565326" >
+                            <Facebook className="text-blue-500" />
+                        </a>
                         <Twitter className="text-blue-400" />
                         <Youtube className="text-red-500" />
                         <Instagram className="text-pink-500" />
@@ -31,7 +35,7 @@ export function Footer() {
                 <Separator className="my-8" />
                 <div className="text-center text-sm text-gray-500">
                     <p>DMCA PROTECTED © 2016 - 2025 All Rights Reserved.</p>
-                    <p>DALAT.PHE - BAN GHE VIPPRO</p>
+                    <p>RYTEMS - BAN GHE VIPPRO</p>
                 </div>
             </div>
         </footer>

@@ -44,7 +44,7 @@ const HomePage = () => {
         <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
             <Header />
 
-            <main className="container mx-auto px-4 py-8 flex-grow">
+            <main className="container mx-auto px-4 py-10 flex-grow">
                 <div className="mb-8">
                     <h2 className="text-xl font-semibold flex items-center gap-2">
                         <span className="bg-black text-white px-3 py-1 rounded">

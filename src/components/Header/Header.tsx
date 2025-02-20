@@ -1,6 +1,5 @@
 
 import { useEffect } from "react";
-import { Search } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/services/store/store";
 import { getAllCategoryTree } from "@/services/features/category/categorySlice";
 
@@ -23,8 +22,7 @@ export default function Header() {
                 {/* Logo */}
                 <a href="/" className="text-2xl font-bold hover:text-blue-200">
                     <div className="text-4xl font-bold tracking-wide flex items-center">
-                        <span className="text-white">DALAT</span>
-                        <span className="text-gray-300">.PHE</span>
+                        <span className="text-white">RYTEMS</span>
                     </div>
                 </a>
 
@@ -66,11 +64,6 @@ export default function Header() {
                             <span className="text-sm text-gray-300">No categories found</span>
                         )
                     )}
-                </div>
-
-                {/* Search Icon */}
-                <div className="ml-auto">
-                    <Search className="w-6 h-6 text-white hover:text-blue-200 cursor-pointer" />
                 </div>
             </nav>
         </header>
