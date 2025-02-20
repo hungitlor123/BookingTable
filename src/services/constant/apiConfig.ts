@@ -5,7 +5,7 @@ export const GET_PRODUCT_BY_ID_ENDPOINT = `${BASE_URL}/get-detail-product`;
 export const CREATE_PRODUCT_ENDPOINT = `${BASE_URL}/create-product`;
 export const EDIT_PRODUCT_ENDPOINT = `${BASE_URL}/update-product`;
 export const DELETE_PRODUCT_ENDPOINT = `${BASE_URL}/delete-product`;
-
+export const GET_PRODUCT_BY_CATEGORY_ENDPOINT = `${BASE_URL}/get-products`;
 //auth
 export const LOGIN_ENDPOINT = `${BASE_URL}/login`;
 export const REGISTER_ENDPOINT = `${BASE_URL}/register`;
