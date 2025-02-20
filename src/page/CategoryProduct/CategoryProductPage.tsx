@@ -15,6 +15,8 @@ const CategoryProductsPage = () => {
 
     useEffect(() => {
         console.log(categoryId);
+        console.log(categoryId);
+
         if (categoryId) {
             dispatch(getProductByCategory({ categoryId: Number(categoryId) }));
             setTimeout(() => {
