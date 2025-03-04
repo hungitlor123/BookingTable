@@ -84,7 +84,7 @@ const TableCategory = () => {
                 </TableHeader>
                 <TableBody>
                     {categories && categories.length > 0 ? (
-                        categories.map(category => (
+                        [...categories].sort((a, b) => b.id - a.id).map(category => (
                             category && (
                                 <TableRow key={category.id}>
                                     <TableCell className="font-medium">

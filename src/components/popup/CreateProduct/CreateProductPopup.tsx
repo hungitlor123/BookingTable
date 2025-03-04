@@ -1,7 +1,6 @@
-import { getAllCategory } from "@/services/features/category/categorySlice";
 import { createProduct, getAllProduct } from "@/services/features/product/productSlice";
 import { useAppDispatch, useAppSelector } from "@/services/store/store";
-import { FC, useEffect } from "react";
+import { FC, } from "react";
 import { useForm } from "react-hook-form";
 
 type FormProductData = {
@@ -24,13 +23,6 @@ const CreateProductPopup: FC<CreateProductPopupProps> = ({ isOpen, onClose }) =>
 
     const { categories } = useAppSelector((state) => state.categories);
 
-    // Gọi API getAllCategory khi component mount
-    useEffect(() => {
-        const fetchCategories = async () => {
-            await dispatch(getAllCategory());
-        };
-        fetchCategories();
-    }, [dispatch]);
 
     const onSubmit = async (data: FormProductData) => {
         const formData = new FormData();

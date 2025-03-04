@@ -76,7 +76,7 @@ const TableProduct = () => {
             <Table>
                 <TableCaption>A list of your recent products.</TableCaption>
                 <TableHeader>
-                    <TableRow>
+                    <TableRow key="header">
                         <TableHead className="w-[150px]">Name</TableHead>
                         <TableHead className="w-[100px]">URL</TableHead>
                         <TableHead>Description</TableHead>
@@ -87,32 +87,32 @@ const TableProduct = () => {
                 </TableHeader>
                 <TableBody>
                     {products && products.length > 0 ? (
-                        products.map(product => (
+                        [...products].sort((a, b) => b.id - a.id).map(product => (
                             product && (
-                                <TableRow key={product.id}>
-                                    <TableCell className="font-medium w-[40vh]">
+                                <TableRow key={`product-${product.id}`}>
+                                    <TableCell key={`name-${product.id}`} className="font-medium w-[40vh]">
                                         {product.name || "No Name"}
                                     </TableCell>
-                                    <TableCell className="w-[30vh]">
+                                    <TableCell key={`url-${product.id}`} className="w-[30vh]">
                                         {product.url ?? 0}
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell key={`desc-${product.id}`}>
                                         {product.description
                                             ? (product.description.length > 30
                                                 ? `${product.description.slice(0, 30)}...`
                                                 : product.description)
                                             : "Empty"}
                                     </TableCell>
-                                    <TableCell className="text-right">
+                                    <TableCell key={`created-${product.id}`} className="text-right">
                                         {formatAnyDate(product.createdAt)}
                                     </TableCell>
-                                    <TableCell className="text-right">
+                                    <TableCell key={`updated-${product.id}`} className="text-right">
                                         {formatAnyDate(product.updatedAt)}
                                     </TableCell>
-                                    <TableCell className="text-right">
+                                    <TableCell key={`actions-${product.id}`} className="text-right">
                                         <button
                                             className="border border-slate-600 p-2 rounded-lg text-white bg-slate-800 font-bold"
-                                            onClick={() => openEditPopup(product)} // Open edit modal with product details
+                                            onClick={() => openEditPopup(product)}
                                         >
                                             Edit
                                         </button>
@@ -127,7 +127,7 @@ const TableProduct = () => {
                             )
                         ))
                     ) : (
-                        <TableRow>
+                        <TableRow key="no-data">
                             <TableCell colSpan={6} className="text-center">
                                 No products available
                             </TableCell>

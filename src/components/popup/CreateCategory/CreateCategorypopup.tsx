@@ -1,6 +1,6 @@
 import { createCategory, getAllCategory } from "@/services/features/category/categorySlice";
 import { useAppDispatch, useAppSelector } from "@/services/store/store";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { useForm } from "react-hook-form";
 
 interface CreateCategoryPopupProps {
@@ -20,9 +20,7 @@ const CreateCategoryPopup: FC<CreateCategoryPopupProps> = ({ isOpen, onClose }) 
     // Lấy danh sách categories từ Redux Store
     const { categories } = useAppSelector((state) => state.categories);
 
-    useEffect(() => {
-        dispatch(getAllCategory());
-    }, [dispatch]);
+
 
     const onSubmit = async (data: FormCategoryData) => {
         const categoryData = {
