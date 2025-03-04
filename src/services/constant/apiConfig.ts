@@ -1,4 +1,4 @@
-export const BASE_URL = "https://banhom-app-5glzk.ondigitalocean.app/api";
+export const BASE_URL = "https://adihoadhaohd-d22wd.ondigitalocean.app/api";
 
 export const GET_PRODUCT_ENDPOINT = `${BASE_URL}/get-all-products`;
 export const GET_PRODUCT_BY_ID_ENDPOINT = `${BASE_URL}/get-detail-product`;

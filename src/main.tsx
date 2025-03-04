@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './apps/index.css';
 import App from './apps/App';
 import { Provider } from 'react-redux';
@@ -8,7 +8,11 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-ReactDOM.render(
+const container = document.getElementById('root');
+if (!container) throw new Error('Failed to find the root element');
+const root = createRoot(container);
+
+root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -16,6 +20,5 @@ ReactDOM.render(
         <App />
       </PersistGate>
     </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );

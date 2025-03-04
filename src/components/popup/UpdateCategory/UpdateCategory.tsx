@@ -22,12 +22,7 @@ const UpdateCategoryPopup: FC<UpdateCategoryPopupProps> = ({ isOpen, onClose, ca
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm<FormCategoryData>();
 
-    // Lấy danh sách danh mục khi component mount
-    useEffect(() => {
-        dispatch(getAllCategory());
-    }, [dispatch]);
 
-    // Reset form khi mở popup
     useEffect(() => {
         if (categoryToEdit) {
             reset({

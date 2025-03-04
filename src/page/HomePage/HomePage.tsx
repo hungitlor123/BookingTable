@@ -48,7 +48,7 @@ const HomePage = () => {
                 <div className="mb-8">
                     <h2 className="text-xl font-semibold flex items-center gap-2">
                         <span className="bg-black text-white px-3 py-1 rounded">
-                            BAN GHE CUC DEP NHE
+                            RECENTLY UPLOADED RYTEMS MODEL
                         </span>
                     </h2>
                 </div>

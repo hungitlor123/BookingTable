@@ -1,5 +1,4 @@
 import { IProduct } from "@/interfaces/Product";
-import { getAllCategory } from "@/services/features/category/categorySlice";
 import { getAllProduct, updateProduct } from "@/services/features/product/productSlice";
 import { useAppDispatch, useAppSelector } from "@/services/store/store";
 import { FC, useEffect, useState } from "react";
@@ -28,10 +27,6 @@ const UpdateProductPopup: FC<UpdateProductPopupProps> = ({ isOpen, onClose, prod
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm<FormProductData>();
 
-    // Lấy danh sách danh mục khi component mount
-    useEffect(() => {
-        dispatch(getAllCategory());
-    }, [dispatch]);
 
     // Reset form và cập nhật ảnh khi chọn sản phẩm khác
     useEffect(() => {

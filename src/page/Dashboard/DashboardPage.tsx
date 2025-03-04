@@ -31,7 +31,7 @@ const Dashboard = () => {
 
     };
     useEffect(() => {
-        fetch("https://banhom-app-5glzk.ondigitalocean.app/page-view-stats")
+        fetch("https://adihoadhaohd-d22wd.ondigitalocean.app/page-view-stats")
             .then((res) => res.json())
             .then((data) => {
                 setData(data.data);
