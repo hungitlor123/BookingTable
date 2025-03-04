@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Header from "@/components/Header/Header";
 import { useAppDispatch, useAppSelector } from "@/services/store/store";
@@ -53,27 +52,26 @@ const HomePage = () => {
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {loading
                         ? Array.from({ length: 6 }).map((_, index) => (
                             <div key={index} className="w-full">
-                                <Skeleton className="w-full aspect-[4/3] rounded-md" />
+                                <Skeleton className="w-full aspect-[16/9] rounded-lg" />
                                 <div className="mt-2 h-6 w-3/4 mx-auto bg-gray-200 rounded animate-pulse"></div>
                             </div>
                         ))
                         : products?.slice(0, visibleProducts).map((product) => (
-
-                            <Link key={product.id} to={`/products/${product.id}`} className="text-center">
-                                <div className="border border-gray-300 rounded-md overflow-hidden shadow-sm">
-                                    <div className="w-full aspect-[4/3] overflow-hidden">
+                            <Link key={product.id} to={`/products/${product.id}`} className="text-center group">
+                                <div className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+                                    <div className="w-full aspect-[16/9] overflow-hidden bg-gray-50">
                                         <img
                                             src={product.image_url}
                                             alt={product.name}
-                                            className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+                                            className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                                         />
                                     </div>
                                 </div>
-                                <h3 className="mt-2 text-base font-semibold text-gray-900 hover:text-blue-700 transition-colors">
+                                <h3 className="mt-3 text-base font-medium text-gray-900 group-hover:text-blue-700 transition-colors">
                                     {product.name}
                                 </h3>
                             </Link>
@@ -83,7 +81,7 @@ const HomePage = () => {
                     {loadingMore &&
                         Array.from({ length: 6 }).map((_, index) => (
                             <div key={`loading-${index}`} className="w-full">
-                                <Skeleton className="w-full aspect-[4/3] rounded-md" />
+                                <Skeleton className="w-full aspect-[16/9] rounded-lg" />
                                 <div className="mt-2 h-6 w-3/4 mx-auto bg-gray-200 rounded animate-pulse"></div>
                             </div>
                         ))}
