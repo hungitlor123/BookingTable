@@ -60,7 +60,7 @@ const HomePage = () => {
                                 <div className="mt-2 h-6 w-3/4 mx-auto bg-gray-200 rounded animate-pulse"></div>
                             </div>
                         ))
-                        : products?.slice(0, visibleProducts).map((product) => (
+                        : (products ? [...products].reverse() : []).slice(0, visibleProducts).map((product) => (
                             <Link key={product.id} to={`/products/${product.id}`} className="text-center group">
                                 <div className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
                                     <div className="w-full aspect-[16/9] overflow-hidden bg-gray-50">
