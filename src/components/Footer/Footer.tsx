@@ -12,11 +12,8 @@ export function Footer() {
                             <h3 className="text-2xl font-bold text-white">Rytems</h3>
                         </a>
                         <p className="text-gray-400 leading-relaxed">
-                            Rytems is a company dedicated to simplifying and
-                            speeding up the work of architects, designers and 3D artists by
-                            offering the best and highest quality parametric Revit families
-                            and 3D models online that are ready to render and
-                            economically affordable.
+                            Rytems is a team specializing in creating Revit family.
+
                         </p>
                         <div className="flex gap-4">
                             <a href="https://www.facebook.com/profile.php?id=61572939565326"
