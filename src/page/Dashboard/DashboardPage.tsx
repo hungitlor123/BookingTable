@@ -31,7 +31,7 @@ const Dashboard = () => {
 
     };
     useEffect(() => {
-        fetch("https://adihoadhaohd-d22wd.ondigitalocean.app/page-view-stats")
+        fetch("http://206.189.90.118:8080/page-view-stats")
             .then((res) => res.json())
             .then((data) => {
                 setData(data.data);
