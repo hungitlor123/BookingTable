@@ -59,7 +59,7 @@ export function LoginForm({
                         <div className="text-center space-y-2">
                             <h1 className="text-2xl font-bold">Sign In</h1>
                             <p className="text-sm text-muted-foreground">
-                                Welcome back! Please enter your details
+                                Welcome back!
                             </p>
                         </div>
 
