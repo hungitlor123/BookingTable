@@ -31,7 +31,7 @@ const Dashboard = () => {
 
     };
     useEffect(() => {
-        fetch("http://206.189.90.118:8080/page-view-stats")
+        fetch("https://rytems.devbaoo.works/page-view-stats")
             .then((res) => res.json())
             .then((data) => {
                 setData(data.data);
