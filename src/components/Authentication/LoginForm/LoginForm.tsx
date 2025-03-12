@@ -42,8 +42,7 @@ export function LoginForm({
                 }
             })
             .catch((error) => {
-                console.log(error);
-                toast.error(error.response?.data || "Login failed");
+                toast.error(error.response?.data);
             })
     };
     useEffect(() => {
