@@ -57,9 +57,19 @@ export function Footer() {
                         </div>
                     </div>
 
-                    {/* Right section - Newsletter */}
+                    {/* Right section - Contact Info & Newsletter */}
                     <div className="space-y-6">
-                        <h3 className="text-xl font-semibold text-white">Newsletter</h3>
+                        <h3 className="text-xl font-semibold text-white">Contact</h3>
+                        <div className="flex flex-col space-y-3">
+                            <p className="text-gray-400">
+                                <span className="font-medium text-white">Phone:</span> +84 908.576.251 (Telegram, Viber, Zalo)
+                            </p>
+                            <p className="text-gray-400">
+                                <span className="font-medium text-white">Email:</span> rytems24@gmail.com
+                            </p>
+                        </div>
+
+                        <h3 className="text-xl font-semibold text-white mt-8">Newsletter</h3>
                         <p className="text-gray-400">Subscribe to our newsletter for updates and exclusive offers.</p>
                         <div className="flex gap-2">
                             <input
