@@ -14,7 +14,6 @@ const CategoryProductsPage = () => {
     const [visibleProducts, setVisibleProducts] = useState(6); // Hiển thị 6 sản phẩm ban đầu
 
     useEffect(() => {
-
         if (categoryId) {
             dispatch(getProductByCategory({ categoryId: Number(categoryId) }));
             setTimeout(() => {
@@ -30,6 +29,8 @@ const CategoryProductsPage = () => {
             setLoadingMore(false);
         }, 1000);
     };
+
+    const sortedProducts = products?.slice().sort((a, b) => b.id - a.id);
 
     return (
         <>
@@ -52,7 +53,7 @@ const CategoryProductsPage = () => {
                                 </div>
                             ))}
                         </div>
-                    ) : products?.length === 0 ? (
+                    ) : sortedProducts?.length === 0 ? (
                         /* Nếu không có sản phẩm nào */
                         <div className="text-center text-gray-500 text-lg mt-10">
                             This product is currently not available.
@@ -61,7 +62,7 @@ const CategoryProductsPage = () => {
                         /* Hiển thị danh sách sản phẩm nếu có */
                         <>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {products?.slice(0, visibleProducts).map((product) => (
+                                {sortedProducts?.slice(0, visibleProducts).map((product) => (
                                     <a key={product.id} href={`/products/${product.id}`} className="text-center">
                                         <div className="border border-gray-300 rounded-md overflow-hidden shadow-sm">
                                             <div className="w-full aspect-[4/3] overflow-hidden">
@@ -80,7 +81,7 @@ const CategoryProductsPage = () => {
                             </div>
 
                             {/* Nút Load More */}
-                            {visibleProducts < (products?.length ?? 0) && (
+                            {visibleProducts < (sortedProducts?.length ?? 0) && (
                                 <div className="flex justify-center mt-6">
                                     <button
                                         onClick={handleLoadMore}
